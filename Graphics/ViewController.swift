@@ -10,16 +10,15 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var drawView: DrawView!
-    @IBOutlet weak var lengthTextField: UITextField!
-    @IBOutlet weak var firstRadiusTextField: UITextField!
-    @IBOutlet weak var secondRadiusTextField: UITextField!
-    @IBOutlet weak var splitLabel: UILabel!
+    @IBOutlet weak var drawView: CartesianCoordinateSystemView!
+    
+    @IBOutlet weak var H: UITextField!
+    @IBOutlet weak var R1: UITextField!
+    @IBOutlet weak var R2: UITextField!
     @IBOutlet weak var slider: UISlider!
-    
-    let basicSplit: CGFloat = 20
-    
 
+    // MARK: Keyboard methods
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
@@ -45,22 +44,21 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         
+        H.delegate = self
+        R1.delegate = self
+        R2.delegate = self
         
-        lengthTextField.delegate = self
-        firstRadiusTextField.delegate = self
-        secondRadiusTextField.delegate = self
-        
-        drawView.setSplit(split: basicSplit)
-        splitLabel.text = "Ціна поділки: \(Int(drawView.split))"
+        let shape = DetailZeroShape(center: .zero, params: DetailZeroShape.Parameters(r1: 20, r2: 35, h: 100))
+        drawView.configure(shape:  shape, shouldDrawMarkers: false)
     }
     
     @IBAction func drawShape(_ sender: Any) {
-        let value = CGFloat(slider.value)
-        
-        let length: CGFloat = CGFloat(Int(lengthTextField.text!) ?? 100) + value
-        let firstRadius: CGFloat = CGFloat(Int(firstRadiusTextField.text!) ?? 25) + value
-        let secondRadius: CGFloat = CGFloat(Int(secondRadiusTextField.text!) ?? 35) + value
-        drawView.drawDetail(length: length, firstRadius: firstRadius, secondRadius: secondRadius)
+        let h: CGFloat = CGFloat(Int(H.text!) ?? 100)
+        let r1: CGFloat = CGFloat(Int(R1.text!) ?? 25)
+        let r2: CGFloat = CGFloat(Int(R2.text!) ?? 35)
+        let param = DetailZeroShape.Parameters(r1: r1, r2: r2, h: h)
+        let shape = DetailZeroShape(center: .zero, params: param)
+        drawView.configure(shape:  shape, shouldDrawMarkers: false)
     }
 
 }

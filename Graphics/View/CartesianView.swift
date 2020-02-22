@@ -71,7 +71,7 @@ class CartesianCoordinateSystemView: UIView {
     
     private func updateDivisionLabelText() {
         
-        divisionValueLabel.text = String(format: "Размер деления %.2f pt", divisionSize)
+        divisionValueLabel.text = String(format: "Ціна поділки %.1f pt", divisionSize)
     }
     
     private func drawAxes(in rect: CGRect) {

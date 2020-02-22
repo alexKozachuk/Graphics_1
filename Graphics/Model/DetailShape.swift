@@ -13,36 +13,18 @@ import CoreGraphics
 struct DetailZeroShape: Shape {
     
     struct Parameters {
-        let h1: CGFloat
-        let h2: CGFloat
-        let h3: CGFloat
-        let h4: CGFloat
-        
-        let w1: CGFloat
-        let w2: CGFloat
         
         let r1: CGFloat
         let r2: CGFloat
+        let h: CGFloat
         
         init(r1: CGFloat = 0,
              r2: CGFloat = 0,
-             h1: CGFloat = 0,
-             h2: CGFloat = 0,
-             h3: CGFloat = 0,
-             h4: CGFloat = 0,
-             w1: CGFloat = 0,
-             w2: CGFloat = 0) {
+             h: CGFloat = 0) {
             
             self.r1 = r1
             self.r2 = r2
-            
-            self.h1 = h1
-            self.h2 = h2
-            self.h3 = h3
-            self.h4 = h4
-            
-            self.w1 = w1
-            self.w2 = w2
+            self.h = h
         }
     }
     
@@ -62,7 +44,12 @@ struct DetailZeroShape: Shape {
         
         var outterPath = Path()
         
-        let topCircleCenter = center + CGPoint(x: 0, y: params.h1)
+        let first = sqrt((params.r1 * params.r1) * 2) // гіпотенуза першого круга
+        let second = sqrt((params.r2 * params.r2) * 2) // гіпотенуза другого круга
+
+        let catet = sqrt(pow((params.h + first + second), 2) / 2) - params.r1 // головний катет мінус перший радіус
+        
+        let topCircleCenter = center + CGPoint(x: 0, y: catet)
         let topCircle = ArcShape(center: topCircleCenter,
                                  radius: params.r1,
                                  start: .degrees(90),
@@ -70,29 +57,23 @@ struct DetailZeroShape: Shape {
                                  clockwise: true)
         outterPath.set(path: topCircle.path)
         
-        let outterRightCircleCenter = center + CGPoint(x: params.w1, y: -params.h3)
+        let outterRightCircleCenter = center + CGPoint(x: catet, y: 0)
+        
         let outterRightCircle = ArcShape(center: outterRightCircleCenter,
                                          radius: params.r2,
-                                         start: .degrees(45),
-                                         end: .degrees(-135),
-                                         clockwise: true)
+                                         start: .degrees(90),
+                                         end: .degrees(180),
+                                         clockwise: false)
+        
         outterPath.connect(path: outterRightCircle.path)
-        
-        let innerRightCircleCenter = center + CGPoint(x: params.w2, y: -params.h4)
-        let innerRightCircle = ArcShape(center: innerRightCircleCenter,
-                                        radius: params.r2,
-                                        start: .degrees(45),
-                                        end: .degrees(225),
-                                        clockwise: false)
-        outterPath.connect(path: innerRightCircle.path)
-        
-        let bottomPoint = center + CGPoint(x: 0, y: -params.h2)
-        outterPath.addLine(to: bottomPoint)
-        
-        let mirroredOutterPath = outterPath.mirroredByAxisX
+
+        let mirroredOutterPath1 = outterPath.mirroredByAxisX
+        outterPath.add(path: mirroredOutterPath1)
+        let mirroredOutterPath2 = outterPath.mirroredByAxisY
         
         resultPath.add(path: outterPath)
-        resultPath.add(path: mirroredOutterPath)
+        resultPath.add(path: mirroredOutterPath1)
+        resultPath.add(path: mirroredOutterPath2)
         
         return resultPath.lines
     }

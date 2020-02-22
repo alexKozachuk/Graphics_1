@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmf-Xi-lCJ" customClass="DrawView" customModule="Graphics" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmf-Xi-lCJ" customClass="CartesianCoordinateSystemView" customModule="Graphics" customModuleProvider="target">
                                 <rect key="frame" x="20" y="64" width="374" height="527"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ціна Поділки:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9lJ-qp-18w">
@@ -41,6 +41,9 @@
                                     <constraint firstAttribute="bottom" secondItem="9lJ-qp-18w" secondAttribute="bottom" constant="10" id="ab4-FI-qRh"/>
                                     <constraint firstAttribute="trailing" secondItem="9lJ-qp-18w" secondAttribute="trailing" constant="10" id="r00-7k-oeK"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="divisionValueLabel" destination="9lJ-qp-18w" id="oKq-Ar-hZ5"/>
+                                </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Efb-EI-p6u">
                                 <rect key="frame" x="17" y="803" width="380" height="42"/>
@@ -108,12 +111,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="H" destination="4QD-wC-qZR" id="chY-Aa-f6T"/>
+                        <outlet property="R1" destination="Jg3-Nn-iY0" id="cdS-KF-KUa"/>
+                        <outlet property="R2" destination="kH2-jB-K4a" id="pPj-6G-bcc"/>
                         <outlet property="drawView" destination="dmf-Xi-lCJ" id="z9w-9D-EJP"/>
-                        <outlet property="firstRadiusTextField" destination="Jg3-Nn-iY0" id="cdS-KF-KUa"/>
-                        <outlet property="lengthTextField" destination="4QD-wC-qZR" id="chY-Aa-f6T"/>
-                        <outlet property="secondRadiusTextField" destination="kH2-jB-K4a" id="pPj-6G-bcc"/>
                         <outlet property="slider" destination="zcN-8c-Em8" id="UAO-9S-xTD"/>
-                        <outlet property="splitLabel" destination="9lJ-qp-18w" id="hdS-cm-QvH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

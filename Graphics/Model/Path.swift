@@ -42,6 +42,23 @@ struct Path {
         return Path(lines: mirroredLines, startPoint: mirroredStartPoint, endPoint: mirroredEndPoint)
     }
     
+    var mirroredByAxisY: Path {
+        let convert = { (point: CGPoint) in
+            return CGPoint(x: point.x, y: -point.y)
+        }
+        
+        let mirroredStartPoint = startPoint.map { convert($0) }
+        let mirroredEndPoint = endPoint.map { convert($0) }
+        let mirroredLines = lines.map { line -> Line in
+            let mirroredStart = convert(line.start)
+            let mirroredEnd = convert(line.end)
+            
+            return Line(start: mirroredStart, end: mirroredEnd)
+        }
+        
+        return Path(lines: mirroredLines, startPoint: mirroredStartPoint, endPoint: mirroredEndPoint)
+    }
+    
     mutating func set(path: Path) {
         self.lines = path.lines
         self.startPoint = path.startPoint
