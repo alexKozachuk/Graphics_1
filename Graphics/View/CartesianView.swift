@@ -25,6 +25,9 @@ class CartesianCoordinateSystemView: UIView {
     private var divisionSize: CGFloat = 10
         
     var shape: Shape?
+    var defaultShape: Shape?
+
+
     var shouldDrawMarkers = true
         
     override func draw(_ rect: CGRect) {
@@ -41,13 +44,30 @@ class CartesianCoordinateSystemView: UIView {
         //setupPinchGesture()
     }
     
-    func configure(shape: Shape, shouldDrawMarkers: Bool) {
+    func configure(shape: Shape, shouldDrawMarkers: Bool, by angle: Angle = .degrees(0),  to point: CGPoint = .zero) {
         self.shape = shape
-        self.shouldDrawMarkers = shouldDrawMarkers
         
+        guard let shape = self.shape else { return }
+        var modifyShape = ModifiyShape(lines: shape.rotate(by: angle))
+        modifyShape = ModifiyShape(lines: modifyShape.moveTo(point: point))
+        
+        self.shape = modifyShape
         setNeedsDisplay()
+        
+        self.shouldDrawMarkers = shouldDrawMarkers
     }
     
+//    func rotate(by angle: Angle) {
+//
+//        modifyShape = ModifiyShape(lines: defaultShape.rotate(by: angle))
+//        self.shape = modifyShape
+//        setNeedsDisplay()
+//    }
+//    
+//    func moveTo(point: CGPoint) {
+//        guard let modifyShape = modifyShapedefaultShape else { return }
+//    }
+//    
     func setupPinchGesture() {
         let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinchRecongnized(pinch:)))
         addGestureRecognizer(pinchRecognizer)

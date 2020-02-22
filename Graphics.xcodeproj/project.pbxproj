@@ -29,7 +29,6 @@
 		D9FB7F6823EAA98B001D2D19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9FB7F6623EAA98B001D2D19 /* Main.storyboard */; };
 		D9FB7F6A23EAA990001D2D19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9FB7F6923EAA990001D2D19 /* Assets.xcassets */; };
 		D9FB7F6D23EAA990001D2D19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9FB7F6B23EAA990001D2D19 /* LaunchScreen.storyboard */; };
-		D9FB7F7523EAAA21001D2D19 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7F7423EAAA21001D2D19 /* DrawView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,7 +56,6 @@
 		D9FB7F6923EAA990001D2D19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9FB7F6C23EAA990001D2D19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9FB7F6E23EAA990001D2D19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D9FB7F7423EAAA21001D2D19 /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +140,6 @@
 				D9FB7F6223EAA98B001D2D19 /* SceneDelegate.swift */,
 				D9FB7F6423EAA98B001D2D19 /* ViewController.swift */,
 				D9FB7F6623EAA98B001D2D19 /* Main.storyboard */,
-				D9FB7F7423EAAA21001D2D19 /* DrawView.swift */,
 				D9FB7F6923EAA990001D2D19 /* Assets.xcassets */,
 				D9FB7F6B23EAA990001D2D19 /* LaunchScreen.storyboard */,
 				D9FB7F6E23EAA990001D2D19 /* Info.plist */,
@@ -233,7 +230,6 @@
 				D9FB7F6123EAA98B001D2D19 /* AppDelegate.swift in Sources */,
 				D9E3091D240116D400547DBD /* Line.swift in Sources */,
 				D9E3092D2401181000547DBD /* UIBeizerPath+Extension.swift in Sources */,
-				D9FB7F7523EAAA21001D2D19 /* DrawView.swift in Sources */,
 				D9E30931240118BD00547DBD /* Matrix.swift in Sources */,
 				D9E309232401175C00547DBD /* ArcShape.swift in Sources */,
 				D9E30933240118D200547DBD /* Angle.swift in Sources */,

@@ -79,10 +79,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="zcN-8c-Em8">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="360" translatesAutoresizingMaskIntoConstraints="NO" id="zcN-8c-Em8">
                                 <rect key="frame" x="18" y="601" width="378" height="31"/>
                                 <connections>
-                                    <action selector="drawShape:" destination="BYZ-38-t0r" eventType="valueChanged" id="WiK-Rw-wbD"/>
+                                    <action selector="angleShape:" destination="BYZ-38-t0r" eventType="valueChanged" id="INL-oM-e6J"/>
                                 </connections>
                             </slider>
                         </subviews>

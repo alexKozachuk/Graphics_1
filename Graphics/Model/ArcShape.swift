@@ -14,7 +14,7 @@ struct ArcShape: Shape {
 
     private let step: CGFloat = Angle.degrees(1).radians / 2
     
-    let center: CGPoint
+    var center: CGPoint
     let radius: CGFloat
     let startRadians: CGFloat
     let endRadians: CGFloat

@@ -15,3 +15,27 @@ protocol Drawable {
 protocol Shape {
     var path: Path { get }
 }
+
+extension Shape {
+    
+    func rotate(by angle: Angle) -> [Line] {
+        var rotateLines: [Line] = []
+        
+        for item in path.lines {
+            rotateLines.append(item.rotate(by: angle))
+        }
+        
+        return rotateLines
+        
+    }
+    
+    func moveTo(point: CGPoint) -> [Line] {
+        var rotateLines: [Line] = []
+        
+        for item in path.lines {
+            rotateLines.append(item.move(to: point))
+        }
+        
+        return rotateLines
+    }
+}

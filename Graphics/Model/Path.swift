@@ -106,7 +106,7 @@ struct Path {
         let connectionLine = Line(start: startPoint, end: endPoint)
         self.lines.append(connectionLine)
     }
-    
 
+    
     
 }

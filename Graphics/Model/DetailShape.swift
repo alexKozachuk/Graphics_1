@@ -79,7 +79,14 @@ struct DetailZeroShape: Shape {
     }
     
     
+}
 
+struct ModifiyShape: Shape {
     
+    var lines: [Line]
+    
+    var path: Path {
+        return Path(lines: lines)
+    }
     
 }
