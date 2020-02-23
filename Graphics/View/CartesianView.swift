@@ -23,15 +23,18 @@ class CartesianCoordinateSystemView: UIView {
         
     private var scale: CGFloat = 1
     private var divisionSize: CGFloat = 10
+    var converter: CartesianToCoreGraphicsSystemCoordinatesConverter!
         
     var shape: Shape?
     var defaultShape: Shape?
-
+    var newCenter: CGPoint = .zero
+    var rotate: Angle?
 
     var shouldDrawMarkers = true
         
     override func draw(_ rect: CGRect) {
         
+        converter = CartesianToCoreGraphicsSystemCoordinatesConverter(rect: rect)
         drawGrid(in: rect, division: divisionSize)
         drawAxes(in: rect)
         drawShapeIfNeeded(in: rect)
@@ -46,47 +49,78 @@ class CartesianCoordinateSystemView: UIView {
     
     func configure(shape: Shape, shouldDrawMarkers: Bool, by angle: Angle = .degrees(0),  to point: CGPoint = .zero) {
         self.shape = shape
-        
-        guard let shape = self.shape else { return }
-        var modifyShape = ModifiyShape(lines: shape.rotate(by: angle))
-        modifyShape = ModifiyShape(lines: modifyShape.moveTo(point: point))
-        
-        self.shape = modifyShape
+        newCenter = .zero
         setNeedsDisplay()
         
         self.shouldDrawMarkers = shouldDrawMarkers
     }
     
-//    func rotate(by angle: Angle) {
-//
-//        modifyShape = ModifiyShape(lines: defaultShape.rotate(by: angle))
-//        self.shape = modifyShape
-//        setNeedsDisplay()
-//    }
-//    
-//    func moveTo(point: CGPoint) {
-//        guard let modifyShape = modifyShapedefaultShape else { return }
-//    }
-//    
-    func setupPinchGesture() {
-        let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinchRecongnized(pinch:)))
-        addGestureRecognizer(pinchRecognizer)
+    @IBAction func longPress(gesture: UILongPressGestureRecognizer) {
+        guard let piece = gesture.view else { return }
+        guard gesture.state == .began else { return }
+        let centerView = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
+        let center = gesture.location(in: piece)
+        self.newCenter = center - centerView
     }
     
-    @IBAction func pinchRecongnized(pinch: UIPinchGestureRecognizer) {
-        guard pinch.state != .began else {
-            return
+    
+    @IBAction func pinchRecongnized(gesture: UIPinchGestureRecognizer) {
+        let tempScale = gesture.scale
+        
+        if gesture.state == .began {
+            self.defaultShape = shape
+        } else if gesture.state == .ended {
+            scale = tempScale
+        } else if gesture.state != .cancelled {
+            if let shape = self.defaultShape {
+               let modifyShape = ModifiyShape(lines: shape.scale(by: tempScale))
+               self.shape = modifyShape
+               setNeedsDisplay()
+            }
         }
-
-        scale += pinch.velocity / 10
-        scale = max(min(scale, 20), 0.2)
         
-        let wrappedSize = min(max(originalDivisionSize * scale, 15), 400)
+    }
+    
+    var initialCenter = CGPoint()  // The initial center point of the view.
+    
+    @IBAction func panPiece(_ gestureRecognizer : UIPanGestureRecognizer) {
+        guard let piece =  gestureRecognizer.view else { return }
+       
+        let translation = gestureRecognizer.translation(in: piece.superview)
+        let move = CGPoint(x: translation.x, y: -translation.y)
+        if gestureRecognizer.state == .began {
+            self.initialCenter = piece.center
+            self.defaultShape = shape
+        } else if gestureRecognizer.state == .ended {
+            self.defaultShape = shape
+            self.newCenter = self.newCenter + move
+        } else if gestureRecognizer.state != .cancelled {
+            
+            if let shape = self.defaultShape {
+                let modifyShape = ModifiyShape(lines: shape.moveTo(point: move))
+                self.shape = modifyShape
+                setNeedsDisplay()
+            }
+        } else {
+            piece.center = .zero
+        }
+    }
+    
+    @IBAction func hanfleRotate(_ gesture: UIRotationGestureRecognizer) {
         
-        divisionSize = wrappedSize
+        if gesture.state == .began {
+            self.defaultShape = shape
+        } else if gesture.state == .ended {
         
-        updateDivisionLabelText()
-        setNeedsDisplay()
+        } else if gesture.state != .cancelled {
+            rotate = .degrees(Int(gesture.rotation * 10))
+            if let shape = self.defaultShape {
+                let modifyShape = ModifiyShape(lines: shape.rotate(by: rotate!, in: newCenter))
+               self.shape = modifyShape
+               setNeedsDisplay()
+            }
+        }
+        
     }
     
     private func updateDivisionLabelText() {
@@ -144,7 +178,7 @@ class CartesianCoordinateSystemView: UIView {
             return
         }
         
-        let converter = CartesianToCoreGraphicsSystemCoordinatesConverter(rect: rect)
+        converter = CartesianToCoreGraphicsSystemCoordinatesConverter(rect: rect)
          
         let shapeBezierPath = converter.convert(path: shape.path).uiBezierPath
         

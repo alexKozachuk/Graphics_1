@@ -37,12 +37,17 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="9lJ-qp-18w" secondAttribute="bottom" constant="10" id="ab4-FI-qRh"/>
                                     <constraint firstAttribute="trailing" secondItem="9lJ-qp-18w" secondAttribute="trailing" constant="10" id="r00-7k-oeK"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="divisionValueLabel" destination="9lJ-qp-18w" id="oKq-Ar-hZ5"/>
+                                    <outletCollection property="gestureRecognizers" destination="HXN-dk-4ch" appends="YES" id="NsU-81-TGb"/>
+                                    <outletCollection property="gestureRecognizers" destination="OA0-9Z-csf" appends="YES" id="wux-NB-g2u"/>
+                                    <outletCollection property="gestureRecognizers" destination="NpX-Oh-stg" appends="YES" id="3ed-9N-MBt"/>
+                                    <outletCollection property="gestureRecognizers" destination="Npl-AF-nEY" appends="YES" id="gyi-VY-RtN"/>
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Efb-EI-p6u">
@@ -119,6 +124,26 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="HXN-dk-4ch">
+                    <connections>
+                        <action selector="panPiece:" destination="dmf-Xi-lCJ" id="JZP-La-Elf"/>
+                    </connections>
+                </panGestureRecognizer>
+                <rotationGestureRecognizer id="OA0-9Z-csf">
+                    <connections>
+                        <action selector="hanfleRotate:" destination="dmf-Xi-lCJ" id="Flm-7o-ZbO"/>
+                    </connections>
+                </rotationGestureRecognizer>
+                <pinchGestureRecognizer id="NpX-Oh-stg">
+                    <connections>
+                        <action selector="pinchRecongnizedWithGesture:" destination="dmf-Xi-lCJ" id="KwW-VH-xAg"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="1" id="Npl-AF-nEY">
+                    <connections>
+                        <action selector="longPressWithGesture:" destination="dmf-Xi-lCJ" id="kuW-7P-KbK"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="121.875"/>
         </scene>

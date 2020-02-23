@@ -18,11 +18,11 @@ protocol Shape {
 
 extension Shape {
     
-    func rotate(by angle: Angle) -> [Line] {
+    func rotate(by angle: Angle, in center: CGPoint) -> [Line] {
         var rotateLines: [Line] = []
         
         for item in path.lines {
-            rotateLines.append(item.rotate(by: angle))
+            rotateLines.append(item.rotate(by: angle, in: center))
         }
         
         return rotateLines
@@ -34,6 +34,16 @@ extension Shape {
         
         for item in path.lines {
             rotateLines.append(item.move(to: point))
+        }
+        
+        return rotateLines
+    }
+    
+    func scale(by scale: CGFloat) -> [Line] {
+        var rotateLines: [Line] = []
+        
+        for item in path.lines {
+            rotateLines.append(item.scale(by: scale))
         }
         
         return rotateLines
