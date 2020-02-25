@@ -7,22 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D9E3091B240116AD00547DBD /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3091A240116AD00547DBD /* Point.swift */; };
 		D9E3091D240116D400547DBD /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3091C240116D400547DBD /* Line.swift */; };
 		D9E3091F240116E600547DBD /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3091E240116E600547DBD /* Path.swift */; };
 		D9E309212401174000547DBD /* DetailShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E309202401174000547DBD /* DetailShape.swift */; };
 		D9E309232401175C00547DBD /* ArcShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E309222401175C00547DBD /* ArcShape.swift */; };
 		D9E30925240117A700547DBD /* SystemCoordinateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E30924240117A700547DBD /* SystemCoordinateConverter.swift */; };
 		D9E30927240117BB00547DBD /* Cartesinan.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E30926240117BB00547DBD /* Cartesinan.swift */; };
-		D9E30929240117DA00547DBD /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E30928240117DA00547DBD /* CGPoint+Extension.swift */; };
-		D9E3092B240117F100547DBD /* CGRect+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3092A240117F100547DBD /* CGRect+Extension.swift */; };
-		D9E3092D2401181000547DBD /* UIBeizerPath+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3092C2401181000547DBD /* UIBeizerPath+Extension.swift */; };
-		D9E30931240118BD00547DBD /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E30930240118BD00547DBD /* Matrix.swift */; };
+		D9E30929240117DA00547DBD /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E30928240117DA00547DBD /* Extension.swift */; };
 		D9E30933240118D200547DBD /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E30932240118D200547DBD /* Angle.swift */; };
-		D9E30935240118E800547DBD /* Equation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E30934240118E800547DBD /* Equation.swift */; };
-		D9E309382401198A00547DBD /* DrawableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E309372401198A00547DBD /* DrawableView.swift */; };
 		D9E3093A240119AD00547DBD /* CartesianView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E30939240119AD00547DBD /* CartesianView.swift */; };
-		D9E3093C240119C800547DBD /* Drawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3093B240119C800547DBD /* Drawable.swift */; };
+		D9E3093C240119C800547DBD /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3093B240119C800547DBD /* Shape.swift */; };
 		D9FB7F6123EAA98B001D2D19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7F6023EAA98B001D2D19 /* AppDelegate.swift */; };
 		D9FB7F6323EAA98B001D2D19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7F6223EAA98B001D2D19 /* SceneDelegate.swift */; };
 		D9FB7F6523EAA98B001D2D19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FB7F6423EAA98B001D2D19 /* ViewController.swift */; };
@@ -32,22 +26,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D9E3091A240116AD00547DBD /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		D9E3091C240116D400547DBD /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		D9E3091E240116E600547DBD /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		D9E309202401174000547DBD /* DetailShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailShape.swift; sourceTree = "<group>"; };
 		D9E309222401175C00547DBD /* ArcShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcShape.swift; sourceTree = "<group>"; };
 		D9E30924240117A700547DBD /* SystemCoordinateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemCoordinateConverter.swift; sourceTree = "<group>"; };
 		D9E30926240117BB00547DBD /* Cartesinan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cartesinan.swift; sourceTree = "<group>"; };
-		D9E30928240117DA00547DBD /* CGPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
-		D9E3092A240117F100547DBD /* CGRect+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extension.swift"; sourceTree = "<group>"; };
-		D9E3092C2401181000547DBD /* UIBeizerPath+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBeizerPath+Extension.swift"; sourceTree = "<group>"; };
-		D9E30930240118BD00547DBD /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
+		D9E30928240117DA00547DBD /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		D9E30932240118D200547DBD /* Angle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
-		D9E30934240118E800547DBD /* Equation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equation.swift; sourceTree = "<group>"; };
-		D9E309372401198A00547DBD /* DrawableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawableView.swift; sourceTree = "<group>"; };
 		D9E30939240119AD00547DBD /* CartesianView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartesianView.swift; sourceTree = "<group>"; };
-		D9E3093B240119C800547DBD /* Drawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawable.swift; sourceTree = "<group>"; };
+		D9E3093B240119C800547DBD /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 		D9FB7F5D23EAA98B001D2D19 /* Graphics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Graphics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9FB7F6023EAA98B001D2D19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9FB7F6223EAA98B001D2D19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,7 +60,6 @@
 		D9E309192401164D00547DBD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D9E3091A240116AD00547DBD /* Point.swift */,
 				D9E3091C240116D400547DBD /* Line.swift */,
 				D9E3091E240116E600547DBD /* Path.swift */,
 				D9E309202401174000547DBD /* DetailShape.swift */,
@@ -86,9 +73,7 @@
 		D9E3092E2401181500547DBD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D9E30928240117DA00547DBD /* CGPoint+Extension.swift */,
-				D9E3092A240117F100547DBD /* CGRect+Extension.swift */,
-				D9E3092C2401181000547DBD /* UIBeizerPath+Extension.swift */,
+				D9E30928240117DA00547DBD /* Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -96,9 +81,7 @@
 		D9E3092F240118AF00547DBD /* Math */ = {
 			isa = PBXGroup;
 			children = (
-				D9E30930240118BD00547DBD /* Matrix.swift */,
 				D9E30932240118D200547DBD /* Angle.swift */,
-				D9E30934240118E800547DBD /* Equation.swift */,
 			);
 			path = Math;
 			sourceTree = "<group>";
@@ -106,9 +89,8 @@
 		D9E309362401197900547DBD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D9E309372401198A00547DBD /* DrawableView.swift */,
 				D9E30939240119AD00547DBD /* CartesianView.swift */,
-				D9E3093B240119C800547DBD /* Drawable.swift */,
+				D9E3093B240119C800547DBD /* Shape.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -220,23 +202,17 @@
 			files = (
 				D9E30927240117BB00547DBD /* Cartesinan.swift in Sources */,
 				D9E309212401174000547DBD /* DetailShape.swift in Sources */,
-				D9E30935240118E800547DBD /* Equation.swift in Sources */,
-				D9E30929240117DA00547DBD /* CGPoint+Extension.swift in Sources */,
+				D9E30929240117DA00547DBD /* Extension.swift in Sources */,
 				D9FB7F6523EAA98B001D2D19 /* ViewController.swift in Sources */,
-				D9E3092B240117F100547DBD /* CGRect+Extension.swift in Sources */,
-				D9E309382401198A00547DBD /* DrawableView.swift in Sources */,
 				D9E3091F240116E600547DBD /* Path.swift in Sources */,
-				D9E3091B240116AD00547DBD /* Point.swift in Sources */,
 				D9FB7F6123EAA98B001D2D19 /* AppDelegate.swift in Sources */,
 				D9E3091D240116D400547DBD /* Line.swift in Sources */,
-				D9E3092D2401181000547DBD /* UIBeizerPath+Extension.swift in Sources */,
-				D9E30931240118BD00547DBD /* Matrix.swift in Sources */,
 				D9E309232401175C00547DBD /* ArcShape.swift in Sources */,
 				D9E30933240118D200547DBD /* Angle.swift in Sources */,
 				D9E3093A240119AD00547DBD /* CartesianView.swift in Sources */,
 				D9FB7F6323EAA98B001D2D19 /* SceneDelegate.swift in Sources */,
 				D9E30925240117A700547DBD /* SystemCoordinateConverter.swift in Sources */,
-				D9E3093C240119C800547DBD /* Drawable.swift in Sources */,
+				D9E3093C240119C800547DBD /* Shape.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

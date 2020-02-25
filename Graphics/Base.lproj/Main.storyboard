@@ -16,10 +16,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmf-Xi-lCJ" customClass="CartesianCoordinateSystemView" customModule="Graphics" customModuleProvider="target">
-                                <rect key="frame" x="20" y="64" width="374" height="527"/>
+                                <rect key="frame" x="20" y="64" width="374" height="557"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ціна Поділки:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9lJ-qp-18w">
-                                        <rect key="frame" x="184" y="487" width="180" height="30"/>
+                                        <rect key="frame" x="184" y="517" width="180" height="30"/>
                                         <color key="backgroundColor" red="0.96078431369999995" green="0.94509803920000002" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="0XV-Ix-gew"/>
@@ -48,27 +48,71 @@
                                     <outletCollection property="gestureRecognizers" destination="OA0-9Z-csf" appends="YES" id="wux-NB-g2u"/>
                                     <outletCollection property="gestureRecognizers" destination="NpX-Oh-stg" appends="YES" id="3ed-9N-MBt"/>
                                     <outletCollection property="gestureRecognizers" destination="Npl-AF-nEY" appends="YES" id="gyi-VY-RtN"/>
+                                    <outletCollection property="gestureRecognizers" destination="Sfj-1R-icl" appends="YES" id="CjK-GJ-2Nr"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Efb-EI-p6u">
-                                <rect key="frame" x="17" y="803" width="380" height="42"/>
-                                <color key="backgroundColor" red="0.96078431369999995" green="0.94509803920000002" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="prd-Jh-eVD"/>
-                                </constraints>
-                                <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                                <state key="normal" title="Draw">
-                                    <color key="titleColor" red="0.20784313730000001" green="0.2901960784" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="drawShape:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ajf-q0-7m3"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="asW-rU-acT">
+                                <rect key="frame" x="20" y="803" width="374" height="42"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Efb-EI-p6u">
+                                        <rect key="frame" x="0.0" y="0.0" width="120.5" height="42"/>
+                                        <color key="backgroundColor" red="0.96078431369999995" green="0.94509803920000002" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="prd-Jh-eVD"/>
+                                        </constraints>
+                                        <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                        <state key="normal" title="Draw">
+                                            <color key="titleColor" red="0.20784313730000001" green="0.2901960784" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="drawShape:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2eA-zM-b5u"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfE-7t-eJ3">
+                                        <rect key="frame" x="126.5" y="0.0" width="121" height="42"/>
+                                        <color key="backgroundColor" red="0.4549019608" green="0.73333333329999995" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="h7p-mN-TJB"/>
+                                        </constraints>
+                                        <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                        <state key="normal" title="Affine">
+                                            <color key="titleColor" red="0.99991279840000002" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="affineTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vmt-KC-xlJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tki-L0-Ykn">
+                                        <rect key="frame" x="253.5" y="0.0" width="120.5" height="42"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="yge-Cy-SaG"/>
+                                        </constraints>
+                                        <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                        <state key="normal" title="Proect">
+                                            <color key="titleColor" red="0.99991279840000002" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="proectTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eTC-WF-ATQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="H" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4QD-wC-qZR">
                                 <rect key="frame" x="20" y="641" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -84,33 +128,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="360" translatesAutoresizingMaskIntoConstraints="NO" id="zcN-8c-Em8">
-                                <rect key="frame" x="18" y="601" width="378" height="31"/>
-                                <connections>
-                                    <action selector="angleShape:" destination="BYZ-38-t0r" eventType="valueChanged" id="INL-oM-e6J"/>
-                                </connections>
-                            </slider>
                         </subviews>
                         <color key="backgroundColor" red="0.20789483189999999" green="0.2921090126" blue="0.47995954750000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="zcN-8c-Em8" firstAttribute="top" secondItem="dmf-Xi-lCJ" secondAttribute="bottom" constant="10" id="2e4-3a-4bs"/>
-                            <constraint firstItem="Efb-EI-p6u" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="17" id="4NH-0k-Fom"/>
+                            <constraint firstItem="asW-rU-acT" firstAttribute="top" secondItem="kH2-jB-K4a" secondAttribute="bottom" constant="20" id="580-r5-W0C"/>
                             <constraint firstItem="Jg3-Nn-iY0" firstAttribute="top" secondItem="4QD-wC-qZR" secondAttribute="bottom" constant="20" id="HoC-fu-dHN"/>
                             <constraint firstItem="kH2-jB-K4a" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="JNN-50-0OE"/>
                             <constraint firstItem="4QD-wC-qZR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Muo-Zv-a9w"/>
-                            <constraint firstItem="4QD-wC-qZR" firstAttribute="top" secondItem="zcN-8c-Em8" secondAttribute="bottom" constant="10" id="PpI-sK-9Ac"/>
                             <constraint firstItem="dmf-Xi-lCJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Rl9-W1-HM6"/>
-                            <constraint firstItem="zcN-8c-Em8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="SBC-7n-BUb"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zcN-8c-Em8" secondAttribute="trailing" constant="20" id="TNH-Zs-x61"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="Efb-EI-p6u" secondAttribute="bottom" constant="17" id="VhH-yU-bYp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Efb-EI-p6u" secondAttribute="trailing" constant="17" id="bOY-jO-ioo"/>
+                            <constraint firstItem="4QD-wC-qZR" firstAttribute="top" secondItem="dmf-Xi-lCJ" secondAttribute="bottom" constant="20" id="VoO-R9-623"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="asW-rU-acT" secondAttribute="bottom" constant="17" id="X1H-Zl-KIW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kH2-jB-K4a" secondAttribute="trailing" constant="20" id="cP0-tc-VuH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="asW-rU-acT" secondAttribute="trailing" constant="20" id="fiG-2K-KHy"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4QD-wC-qZR" secondAttribute="trailing" constant="20" id="hfc-it-evf"/>
                             <constraint firstItem="Jg3-Nn-iY0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="i1L-6Y-0vr"/>
                             <constraint firstItem="dmf-Xi-lCJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="krt-Qb-Pbn"/>
-                            <constraint firstItem="Efb-EI-p6u" firstAttribute="top" secondItem="kH2-jB-K4a" secondAttribute="bottom" constant="20" id="mAP-D9-H8i"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jg3-Nn-iY0" secondAttribute="trailing" constant="20" id="ouZ-eW-BX2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dmf-Xi-lCJ" secondAttribute="trailing" constant="20" id="r1n-XY-Job"/>
+                            <constraint firstItem="asW-rU-acT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="tin-Jp-jtE"/>
                             <constraint firstItem="kH2-jB-K4a" firstAttribute="top" secondItem="Jg3-Nn-iY0" secondAttribute="bottom" constant="20" id="z67-2H-POu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -120,7 +155,6 @@
                         <outlet property="R1" destination="Jg3-Nn-iY0" id="cdS-KF-KUa"/>
                         <outlet property="R2" destination="kH2-jB-K4a" id="pPj-6G-bcc"/>
                         <outlet property="drawView" destination="dmf-Xi-lCJ" id="z9w-9D-EJP"/>
-                        <outlet property="slider" destination="zcN-8c-Em8" id="UAO-9S-xTD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -144,6 +178,11 @@
                         <action selector="longPressWithGesture:" destination="dmf-Xi-lCJ" id="kuW-7P-KbK"/>
                     </connections>
                 </pongPressGestureRecognizer>
+                <tapGestureRecognizer id="Sfj-1R-icl">
+                    <connections>
+                        <action selector="tapRecognizer:" destination="dmf-Xi-lCJ" id="MUl-gi-Jpm"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="121.875"/>
         </scene>

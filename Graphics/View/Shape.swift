@@ -1,5 +1,5 @@
 //
-//  Drawable.swift
+//  Shape.swift
 //  Graphics
 //
 //  Created by Sasha on 22/02/2020.
@@ -7,10 +7,6 @@
 //
 
 import UIKit
-
-protocol Drawable {
-    func draw()
-}
 
 protocol Shape {
     var path: Path { get }
@@ -47,5 +43,25 @@ extension Shape {
         }
         
         return rotateLines
+    }
+    
+    func affine(point0: CGPoint, pointx: CGPoint, pointy: CGPoint) -> [Line]{
+        var affineLines: [Line] = []
+        
+        for item in path.lines {
+            affineLines.append(item.affine(point0: point0, pointx: pointx, pointy: pointy))
+        }
+        
+        return affineLines
+    }
+    
+    func affineW(point0: CGPoint, w0: CGFloat, pointx: CGPoint, wx: CGFloat, pointy: CGPoint, wy: CGFloat) -> [Line] {
+        var affineLines: [Line] = []
+        
+        for item in path.lines {
+            affineLines.append(item.affineW(point0: point0, w0: w0, pointx: pointx, wx: wx, pointy: pointy, wy: wy))
+        }
+        
+        return affineLines
     }
 }

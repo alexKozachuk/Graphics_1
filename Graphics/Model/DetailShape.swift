@@ -7,10 +7,10 @@
 //
 
 import Foundation
-
+import UIKit
 import CoreGraphics
 
-struct DetailZeroShape: Shape {
+struct DetailShape: Shape {
     
     struct Parameters {
         
@@ -75,6 +75,8 @@ struct DetailZeroShape: Shape {
         resultPath.add(path: mirroredOutterPath1)
         resultPath.add(path: mirroredOutterPath2)
         
+       
+        
         return resultPath.lines
     }
     
@@ -90,3 +92,83 @@ struct ModifiyShape: Shape {
     }
     
 }
+
+struct GridShape: Shape {
+    
+    struct Parameters {
+        
+        var min: CGPoint
+        var max: CGPoint
+        var division: CGFloat
+
+        
+        init(min: CGPoint = CGPoint(x: 0, y: 0),
+             max: CGPoint = CGPoint(x: 0, y: 0),
+             division: CGFloat = 0) {
+            
+            self.min = min
+            self.max = max
+            self.division = division
+        }
+    }
+    
+    var path: Path {
+        return Path(lines: lines)
+    }
+    
+    var params: Parameters
+    
+    var lines: [Line] {
+        var linesArr: [Line] = []
+        
+        for y in stride(from: 0, to: params.max.y, by: params.division) {
+            linesArr.append(Line(start: CGPoint(x: params.min.x, y: y), end: CGPoint(x: params.max.x, y: y)))
+        }
+        
+        for x in stride(from: 0, to: params.max.x, by: params.division) {
+            linesArr.append(Line(start: CGPoint(x: x, y: params.min.y), end: CGPoint(x: x, y: params.max.y)))
+        }
+        
+        var path = Path(lines: linesArr, startPoint: linesArr.first!.start, endPoint: linesArr.last!.end)
+        
+        let path1 = path.mirroredByAxisX
+        path.add(path: path1)
+        let path2 = path.mirroredByAxisY
+        path.add(path: path2)
+        
+        
+        return path.lines
+    }
+    
+//    func affine(point0: CGPoint, pointx: CGPoint, pointy: CGPoint) -> [Line]{
+//        var affineLines: [Line] = []
+//
+//        for item in path.lines {
+//            affineLines.append(item.affine(point0: point0, pointx: pointx, pointy: pointy))
+//        }
+//
+//        return affineLines
+//    }
+//
+//    func affineW(point0: CGPoint, w0: CGFloat, pointx: CGPoint, wx: CGFloat, pointy: CGPoint, wy: CGFloat) -> [Line] {
+//        var affineLines: [Line] = []
+//
+//        for item in path.lines {
+//            affineLines.append(item.affineW(point0: point0, w0: w0, pointx: pointx, wx: wx, pointy: pointy, wy: wy))
+//        }
+//
+//        return affineLines
+//    }
+//
+//    func scale(by scale: CGFloat) -> [Line] {
+//        var rotateLines: [Line] = []
+//
+//        for item in path.lines {
+//            rotateLines.append(item.scale(by: scale))
+//        }
+//
+//        return rotateLines
+//    }
+    
+}
+

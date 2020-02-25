@@ -35,5 +35,29 @@ struct Line {
         let endY = end.y * scale
         return Line(start: CGPoint(x: startX, y: startY), end: CGPoint(x: endX, y: endY))
     }
+    
+    func affine(point0: CGPoint, pointx: CGPoint, pointy: CGPoint) -> Line{
+        
+        let startX = (point0.x + pointx.x * start.x + pointy.x * start.y)
+        let startY = (point0.y + pointx.y * start.x + pointy.y * start.y)
+        let endX = (point0.x + pointx.x * end.x + pointy.x * end.y)
+        let endY = (point0.y + pointx.y * end.x + pointy.y * end.y)
+        let newStart = CGPoint(x: startX, y: startY)
+        
+        return Line(start: newStart, end: CGPoint(x: endX, y: endY))
+    }
+    
+    func affineW(point0: CGPoint, w0: CGFloat, pointx: CGPoint, wx: CGFloat, pointy: CGPoint, wy: CGFloat) -> Line{
+        
+        let startX =  (point0.x * w0 + pointx.x * wx * start.x + pointy.x * wy * start.y) / (w0 + wx * start.x + wy * start.y)
+        let startY = (point0.y * w0 + pointx.y * wy * start.x + pointy.y * wx * start.y) /
+            (w0 + wx * start.x + wy * start.y * wy)
+        let endX =  (point0.x * w0 + pointx.x * wx * end.x + pointy.x * wy * end.y) / (w0 + wx * end.x + wy * end.y)
+        let endY =  (point0.y * w0 + pointx.y * wy * end.x + pointy.y * wx * end.y) /
+            (w0 + wx * end.x + wy * end.y * wy)
+        
+        let newStart = CGPoint(x: startX, y: startY)
+        
+        return Line(start: newStart, end: CGPoint(x: endX, y: endY))
+    }
 }
-

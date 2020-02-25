@@ -17,12 +17,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var R2: UITextField!
     @IBOutlet weak var slider: UISlider!
     
-    var shape: DetailZeroShape {
+    var shape: DetailShape {
         let h: CGFloat = CGFloat(Int(H.text!) ?? 100)
         let r1: CGFloat = CGFloat(Int(R1.text!) ?? 25)
         let r2: CGFloat = CGFloat(Int(R2.text!) ?? 35)
-        let param = DetailZeroShape.Parameters(r1: r1, r2: r2, h: h)
-        return DetailZeroShape(center: .zero, params: param)
+        let param = DetailShape.Parameters(r1: r1, r2: r2, h: h)
+        return DetailShape(center: .zero, params: param)
     }
 
     // MARK: Keyboard methods
@@ -56,17 +56,62 @@ class ViewController: UIViewController {
         R1.delegate = self
         R2.delegate = self
         
-        let shape = DetailZeroShape(center: .zero, params: DetailZeroShape.Parameters(r1: 20, r2: 35, h: 100))
-        drawView.configure(shape:  shape, shouldDrawMarkers: false)
+        let shape = DetailShape(center: .zero, params: DetailShape.Parameters(r1: 20, r2: 35, h: 100))
+        let rect = drawView.layer.visibleRect
+        let min = CGPoint(x: rect.minX, y: rect.minY)
+        let max = CGPoint(x: rect.maxY, y: rect.maxY)
+        let grid = GridShape(params: GridShape.Parameters(min: min, max: max, division: 10))
+        drawView.configure(shape: shape, grid: grid)
     }
     
     @IBAction func drawShape(_ sender: Any) {
-        drawView.configure(shape:  shape, shouldDrawMarkers: false)
+        let rect = drawView.layer.visibleRect
+        let min = CGPoint(x: rect.minX, y: rect.minY)
+        let max = CGPoint(x: rect.maxY, y: rect.maxY)
+        let grid = GridShape(params: GridShape.Parameters(min: min, max: max, division: 10))
+        drawView.configure(shape: shape, grid: grid)
     }
     
     @IBAction func angleShape(_ sender: Any) {
-        let angle = Int(slider.value)
-        drawView.configure(shape: shape, shouldDrawMarkers: false, by: .degrees(angle), to: .zero + CGPoint(x: 10, y: 10))
+        /*let angle = Int(slider.value)
+        drawView.configure(shape: shape, shouldDrawMarkers: false, by: .degrees(angle), to: .zero + CGPoint(x: 10, y: 10))*/
+    }
+    
+    @IBAction func affineTapped(_ sender: Any) {
+        drawView.affine()
+    }
+    
+    @IBAction func proectTapped(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Proect", message: "введіть вагу точок", preferredStyle: .alert)
+
+      
+        alert.addTextField { (textField) in
+            textField.placeholder = "w0"
+        }
+        alert.addTextField { (textField) in
+            textField.placeholder = "wx"
+        }
+        alert.addTextField { (textField) in
+            textField.placeholder = "wy"
+        }
+
+       
+        alert.addAction(UIAlertAction(title: "Draw", style: .default, handler: { [weak alert] (_) in
+            guard let textFieldW0 = alert?.textFields?[0] else { return }
+            guard let textFieldWX = alert?.textFields?[1] else { return }
+            guard let textFieldWY = alert?.textFields?[2] else { return }
+            guard let w0text = textFieldW0.text else { return }
+            guard let wxtext = textFieldWX.text else { return }
+            guard let wytext = textFieldWY.text else { return }
+            guard let w0 = Float(w0text) else { return }
+            guard let wx = Float(wxtext) else { return }
+            guard let wy = Float(wytext) else { return }
+            
+            self.drawView.affineW(w0: CGFloat(w0), wx: CGFloat(wx), wy: CGFloat(wy))
+        }))
+
+        self.present(alert, animated: true, completion: nil)
     }
 
 }
